@@ -1,6 +1,6 @@
 
 const path = require('path');
-require('dotenv').config({ path:'../.env'})
+require('dotenv').config({ path:'.env'})
 const variables = {
     PORT: process.env.PORT,
     DB_HOST: process.env.DB_HOST,
