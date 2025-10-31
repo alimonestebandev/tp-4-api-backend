@@ -7,8 +7,12 @@ const authRoutes = require('./routes/auth.js');
 const userRoutes = require('./routes/user.js');
 const errorHandler = require('./middlewares/errorHandler.js');
 
-
+const cookieParser = require('cookie-parser');
 const app = express();
+
+
+
+app.use(cookieParser());
 app.use(express.json());
 
 
