@@ -33,7 +33,7 @@ user.password = await bcrypt.hash(password, saltRounds);
 
 
 await user.save();
-res.json({ id: user.id, name: user.name, email: user.email });
+res.json({ id: user.id, name: user.name, email: user.email , message: "Usuario actualizado correctamente"});
 } catch (err) { next(err); }
 };
 
