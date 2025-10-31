@@ -43,8 +43,13 @@ if (!valid) return res.status(401).json({ message: 'Datos inválidos' });
 
 const token = signToken({ id: user.id });
 
+ res.cookie('token', token, {
+     httpOnly: true,
+       sameSite: 'strict',
+    });
 
-return res.json({ token, user: { id: user.id, name: user.name, email: user.email, message: "Has iniciado sesión correctamente" } });
+
+return res.json({user: { id: user.id, name: user.name, email: user.email, message: "Has iniciado sesión correctamente" } });
 } catch (err) {
 next(err);
 }
