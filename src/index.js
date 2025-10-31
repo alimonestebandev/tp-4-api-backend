@@ -1,5 +1,7 @@
 const express = require('express');
-require('dotenv').config();
+
+const variables = require('./utils/variables.js')
+
 const sequelize = require('./config/db.js');
 const authRoutes = require('./routes/auth.js');
 const userRoutes = require('./routes/user.js');
@@ -20,7 +22,7 @@ app.get('/', (req, res) => res.json({ ok: true, message: 'API Usuarios funcionan
 app.use(errorHandler);
 
 
-const PORT = process.env.PORT || 3000;
+const PORT = variables.PORT || 3000;
 
 
 (async () => {
