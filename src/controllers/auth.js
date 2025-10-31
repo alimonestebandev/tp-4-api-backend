@@ -20,7 +20,7 @@ const hashed = await bcrypt.hash(password, saltRounds);
 const user = await User.create({ name, email, password: hashed });
 
 
-return res.status(201).json({ id: user.id, name: user.name, email: user.email, message: "Te has registrado correctamente" });
+return res.status(201).json({ name: user.name, email: user.email, message: "Te has registrado correctamente" });
 } catch (err) {
 next(err);
 }
@@ -49,7 +49,7 @@ const token = signToken({ id: user.id });
     });
 
 
-return res.json({user: { id: user.id, name: user.name, email: user.email, message: "Has iniciado sesión correctamente" } });
+return res.json({user: {email: user.email, message: "Has iniciado sesión correctamente" } });
 } catch (err) {
 next(err);
 }

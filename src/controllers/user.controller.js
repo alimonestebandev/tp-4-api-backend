@@ -6,7 +6,7 @@ const getMe = async (req, res, next) => {
 try {
 const user = await User.findByPk(req.userId, { attributes: ['id', 'name', 'email', 'createdAt'] });
 if (!user) return res.status(404).json({ message: 'Usuario no encontrado' });
-res.json({user, message: "Usuario encontrado"});
+res.json({ message: "Usuario encontrado:" + user.name});
 } catch (err) { next(err); }
 };
 
@@ -33,7 +33,7 @@ user.password = await bcrypt.hash(password, saltRounds);
 
 
 await user.save();
-res.json({ id: user.id, name: user.name, email: user.email , message: "Usuario actualizado correctamente"});
+res.json({ name: user.name, email: user.email , message: "Usuario actualizado correctamente"});
 } catch (err) { next(err); }
 };
 
